@@ -22,7 +22,7 @@ def conv_layer(x_image, W_size, weight_name, b_size, bias_name, stride, padding)
     
 mode = 'train'
 
-bs = 32
+bs = 50
 num_training_samples = 7124
 epoch = round(num_training_samples / bs)
 num_batch = epoch * 200
