@@ -6,7 +6,7 @@ import numpy as np
 import cv2,os,shutil,random
 
 def weight_variable(shape, name):
-    initial = tf.random_normal(shape, stddev=0.1) # 变量的初始值为截断正太分布
+    initial = tf.random_normal(shape, stddev=0.1)
     return tf.Variable(initial, name=name)
 
 def bias_variable(shape):
@@ -77,8 +77,8 @@ fc_add = tf.matmul(flat, W_fc) + b_fc
 y_conv = tf.nn.softmax(fc_add)
 pred = tf.argmax(y_conv,1)
 
-cross_entropy = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(logits=fc_add, labels=y)) # 损失函数，交叉熵
-train_step = tf.train.AdamOptimizer(0.0001).minimize(cross_entropy, var_list=[var for var in tf.trainable_variables()]) # 使用adam优化
+cross_entropy = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(logits=fc_add, labels=y))
+train_step = tf.train.AdamOptimizer(0.0001).minimize(cross_entropy, var_list=[var for var in tf.trainable_variables()])
 
 saver=tf.train.Saver(max_to_keep=5000, var_list=[var for var in tf.trainable_variables()])
 
